@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/military/Layout";
 import { Radar } from "@/components/military/Radar";
 import { SectionTitle } from "@/components/military/SectionTitle";
-import { ChevronLeft, Shield, Plane, Anchor, Crown, Crosshair, Activity, Users, Target, Award } from "lucide-react";
+import { CategoriesGallery } from "@/components/military/CategoriesGallery";
+import { ChevronLeft, Activity, Users, Target, Award } from "lucide-react";
 import heroImg from "@/assets/hero-military.jpg";
 
 export const Route = createFileRoute("/")({ component: Home });
@@ -12,14 +13,6 @@ const stats = [
   { icon: Target, label: "عمليات مكتملة", value: "8,932" },
   { icon: Activity, label: "مهام جارية", value: "23" },
   { icon: Award, label: "أوسمة شرف", value: "451" },
-];
-
-const branches = [
-  { icon: Shield, name: "القوات البرية", desc: "العمود الفقري للدفاع البري" },
-  { icon: Plane, name: "القوات الجوية", desc: "السيادة الجوية والدفاع الفضائي" },
-  { icon: Anchor, name: "القوات البحرية", desc: "حماية المياه الإقليمية" },
-  { icon: Crown, name: "الحرس الملكي", desc: "حماية القيادة العليا" },
-  { icon: Crosshair, name: "القوات الخاصة", desc: "العمليات السرية والاقتحام" },
 ];
 
 function Home() {
@@ -93,28 +86,12 @@ function Home() {
       </section>
 
       {/* Branches preview */}
-      <section className="container mx-auto px-4 py-24">
-        <SectionTitle kicker="DIVISIONS" title="فروع القوات المسلحة" subtitle="خمسة فروع نخبوية تشكل العمود الفقري للقوة الدفاعية" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {branches.map((b, i) => (
-            <div key={b.name} className="glass-panel p-6 group glow-hover animate-fade-up" style={{ animationDelay: `${i*0.08}s` }}>
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-14 h-14 rounded grid place-items-center bg-primary/10 border border-primary/30 group-hover:bg-primary/20 transition-colors">
-                  <b.icon className="h-7 w-7 text-primary" />
-                </div>
-                <span className="font-mono text-[10px] text-muted-foreground">UNIT-0{i+1}</span>
-              </div>
-              <h3 className="text-xl font-bold mb-2">{b.name}</h3>
-              <p className="text-sm text-muted-foreground">{b.desc}</p>
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-10">
+      <CategoriesGallery />
+      <div className="container mx-auto px-4 -mt-8 pb-20 text-center">
           <Link to="/branches" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
             استكشف جميع الفروع <ChevronLeft className="h-4 w-4" />
           </Link>
-        </div>
-      </section>
+      </div>
     </Layout>
   );
 }
