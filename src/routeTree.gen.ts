@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SoldiersRouteImport } from './routes/soldiers'
 import { Route as RecruitmentRouteImport } from './routes/recruitment'
 import { Route as OperationsRouteImport } from './routes/operations'
 import { Route as LeadershipRouteImport } from './routes/leadership'
@@ -16,6 +17,11 @@ import { Route as LawsRouteImport } from './routes/laws'
 import { Route as BranchesRouteImport } from './routes/branches'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SoldiersRoute = SoldiersRouteImport.update({
+  id: '/soldiers',
+  path: '/soldiers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecruitmentRoute = RecruitmentRouteImport.update({
   id: '/recruitment',
   path: '/recruitment',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/leadership': typeof LeadershipRoute
   '/operations': typeof OperationsRoute
   '/recruitment': typeof RecruitmentRoute
+  '/soldiers': typeof SoldiersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/leadership': typeof LeadershipRoute
   '/operations': typeof OperationsRoute
   '/recruitment': typeof RecruitmentRoute
+  '/soldiers': typeof SoldiersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/leadership': typeof LeadershipRoute
   '/operations': typeof OperationsRoute
   '/recruitment': typeof RecruitmentRoute
+  '/soldiers': typeof SoldiersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/leadership'
     | '/operations'
     | '/recruitment'
+    | '/soldiers'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/leadership'
     | '/operations'
     | '/recruitment'
+    | '/soldiers'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/leadership'
     | '/operations'
     | '/recruitment'
+    | '/soldiers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,10 +118,18 @@ export interface RootRouteChildren {
   LeadershipRoute: typeof LeadershipRoute
   OperationsRoute: typeof OperationsRoute
   RecruitmentRoute: typeof RecruitmentRoute
+  SoldiersRoute: typeof SoldiersRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/soldiers': {
+      id: '/soldiers'
+      path: '/soldiers'
+      fullPath: '/soldiers'
+      preLoaderRoute: typeof SoldiersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recruitment': {
       id: '/recruitment'
       path: '/recruitment'
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   LeadershipRoute: LeadershipRoute,
   OperationsRoute: OperationsRoute,
   RecruitmentRoute: RecruitmentRoute,
+  SoldiersRoute: SoldiersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
