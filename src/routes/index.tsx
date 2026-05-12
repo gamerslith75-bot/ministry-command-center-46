@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/military/Layout";
 import { Radar } from "@/components/military/Radar";
-import { CategoriesGallery } from "@/components/military/CategoriesGallery";
 import { ChevronLeft, Activity, Users, Target, Award } from "lucide-react";
 import heroImg from "@/assets/hero-military.jpg";
 
@@ -83,14 +82,6 @@ function Home() {
           ))}
         </div>
       </section>
-
-      {/* Branches preview */}
-      <CategoriesGallery />
-      <div className="container mx-auto px-4 -mt-8 pb-20 text-center">
-          <Link to="/branches" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
-            استكشف جميع الفروع <ChevronLeft className="h-4 w-4" />
-          </Link>
-      </div>
     </Layout>
   );
 }
