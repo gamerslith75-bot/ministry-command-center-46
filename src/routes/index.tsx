@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/military/Layout";
 import { Radar } from "@/components/military/Radar";
-import { SectionTitle } from "@/components/military/SectionTitle";
 import { CategoriesGallery } from "@/components/military/CategoriesGallery";
 import { ChevronLeft, Activity, Users, Target, Award } from "lucide-react";
 import heroImg from "@/assets/hero-military.jpg";
