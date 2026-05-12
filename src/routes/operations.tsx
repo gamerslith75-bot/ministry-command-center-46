@@ -46,14 +46,14 @@ function Operations() {
                 <path d="M30,200 L100,180 L180,220 L260,190 L350,210" stroke="oklch(0.42 0.06 130 / 0.6)" strokeWidth="2" fill="none"/>
               </svg>
               {[
-                { top: "30%", left: "25%", c: "destructive" },
-                { top: "55%", left: "60%", c: "primary" },
-                { top: "70%", left: "35%", c: "success" },
-                { top: "40%", left: "75%", c: "primary" },
+                { top: "30%", left: "25%", c: "bg-destructive" },
+                { top: "55%", left: "60%", c: "bg-primary" },
+                { top: "70%", left: "35%", c: "bg-success" },
+                { top: "40%", left: "75%", c: "bg-primary" },
               ].map((p, i) => (
                 <div key={i} className="absolute" style={{ top: p.top, left: p.left }}>
-                  <div className={`w-3 h-3 rounded-full bg-${p.c} animate-blink`} />
-                  <div className={`absolute inset-0 w-3 h-3 rounded-full bg-${p.c} animate-pulse-ring`} />
+                  <div className={`w-3 h-3 rounded-full ${p.c} animate-blink`} />
+                  <div className={`absolute inset-0 w-3 h-3 rounded-full ${p.c} animate-pulse-ring opacity-60`} />
                 </div>
               ))}
             </div>
