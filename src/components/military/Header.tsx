@@ -9,6 +9,7 @@ const navItems = [
   { to: "/laws", label: "القوانين" },
   { to: "/leadership", label: "القيادة" },
   { to: "/operations", label: "العمليات" },
+  { to: "/soldiers", label: "الجنود" },
 ] as const;
 
 export function Header() {
